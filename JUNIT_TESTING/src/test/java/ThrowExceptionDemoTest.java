@@ -8,13 +8,18 @@ import org.junit.jupiter.api.Test;
 class ThrowExceptionDemoTest {
 
 	static Function<String, String> getError = (functionName) -> {
-		String str = switch (functionName) {
-		case "add" -> "Addition Operation failed";
-		case "sub" -> "Substration Operation failed";
-		case "mul" -> "Multiplication Operation failed";
-		case "div" -> "Division Operation failed";
-		default -> throw new IllegalArgumentException("Unexpected value: " + functionName);
-		};
+		String str = "";
+		if ("add".equals(functionName)) {
+			str = "Addtion Operation failed";
+		} else if ("sub".equals(functionName)) {
+			str = "Substration Operation failed";
+		} else if ("mul".equals(functionName)) {
+			str = "Multiplication Operation failed";
+		} else if ("div".equals(functionName)) {
+			str = "Division Operation failed";
+		} else {
+			str = "Illegal function call";
+		}
 		return str;
 	};
 
