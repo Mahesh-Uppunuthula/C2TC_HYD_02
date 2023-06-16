@@ -1,5 +1,6 @@
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class App {
@@ -14,14 +15,14 @@ public class App {
 		 * since ID is an auto-increment attribute, we don't have to add it manually.
 		 * s1.setId(2);
 		 */
-		s1.setName("baby");
-		s1.setArtist("justin beiber");
+		s1.setName("High");
+		s1.setArtist("Chain Smokers");
 
 		Session s = sf.openSession();
-		s.beginTransaction();
+		Transaction tx = s.beginTransaction();
 
-		s.save(s1);
-		s.getTransaction().commit();
+		s.persist(s1);
+		tx.commit();
 
 	}
 
