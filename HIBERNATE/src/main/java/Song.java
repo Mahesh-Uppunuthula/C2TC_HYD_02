@@ -17,6 +17,21 @@ public class Song {
 	@Column(name = "artist")
 	private String artist;
 
+	public Song() {
+	}
+
+	public Song(int id, String name, String artist) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.artist = artist;
+	}
+
+	@Override
+	public String toString() {
+		return "Song [id=" + id + ", name=" + name + ", artist=" + artist + "]";
+	}
+
 	public int getId() {
 		return id;
 	}
