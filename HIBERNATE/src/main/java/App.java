@@ -15,22 +15,15 @@ public class App {
 
 	public static void main(String[] args) {
 
-		try {
-			while (true) {
-				System.out
-						.println("Enter option number to perform operation\n1.Create 2.Read 3.Update 4.Delete 5.Exit");
-				int optionNum = sc.nextInt();
-				if (optionNum == 5)
-					break;
-				performOperation(optionNum);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			tx.commit();
-			sc.close();
+		while (true) {
+			System.out
+					.println("\n\nEnter option number to perform operation\n1.Create 2.Read 3.Update 4.Delete 5.Exit");
+			int optionNum = sc.nextInt();
+			if (optionNum == 5)
+				break;
+			performOperation(optionNum);
 		}
-
+		tx.commit();
 	}
 
 	static void performOperation(int i) {
