@@ -15,15 +15,21 @@ public class App {
 
 	public static void main(String[] args) {
 
-		while (true) {
-			System.out.println("Enter option number to perform operation\n1.Create 2.Read 3.Update 4.Delete 5.Exit");
-			int optionNum = sc.nextInt();
-			if (optionNum == 5)
-				break;
-			performOperation(optionNum);
+		try {
+			while (true) {
+				System.out
+						.println("Enter option number to perform operation\n1.Create 2.Read 3.Update 4.Delete 5.Exit");
+				int optionNum = sc.nextInt();
+				if (optionNum == 5)
+					break;
+				performOperation(optionNum);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			tx.commit();
+			sc.close();
 		}
-		tx.commit();
-		sc.close();
 
 	}
 
@@ -52,11 +58,11 @@ public class App {
 		System.out.println("enter song details");
 		System.out.print("id :");
 		int id = sc.nextInt();
-		System.out.print("\nname : ");
-		String name = sc.next();
-		System.out.print("\nartist : ");
-		String artist = sc.next();
 		sc.nextLine();
+		System.out.print("\nname : ");
+		String name = sc.nextLine();
+		System.out.print("\nartist : ");
+		String artist = sc.nextLine();
 		Song newSong = new Song(id, name, artist);
 		session.persist(newSong);
 	}
@@ -78,14 +84,15 @@ public class App {
 		System.out.println("select one out of [1.name 2.artist]");
 		int opt = sc.nextInt();
 
+		sc.nextLine();
 		Song songToUpdate = session.get(Song.class, id);
 		if (opt == 1) {
 			System.out.print("name : ");
-			String name = sc.next();
+			String name = sc.nextLine();
 			songToUpdate.setName(name);
 		} else {
 			System.out.print("artist : ");
-			String artist = sc.next();
+			String artist = sc.nextLine();
 			songToUpdate.setArtist(artist);
 		}
 	}
