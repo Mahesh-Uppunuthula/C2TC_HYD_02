@@ -1,8 +1,33 @@
 package com.example.demo.classes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
+/*
+ * by default the spring Beans in the Spring Container are created using 'singleton' Scope
+ * when a component is created.
+ * 
+ * by default @Scope is mentioned or used in the background.
+ *  so we don't have to mention it again.
+ * 
+ * 
+ * -------------------SINGLETON SCOPE------------------------
+ * 
+ * @Scope(value="singleton"):
+ * 
+ * which creates a 'SINGLE INSTANCE' of each component
+ * mentioned using '@Component' annotation 'NO MATTER IF IT IS USED OR NOT'.
+ * 
+ * 
+ * -------------------PROTOTYPE SCOPE---------------------
+ * @Scope(value="prototype"):
+ * 
+ * which creates a 'INSTANCES' of a specified component
+ * mentioned using '@Component' annotation 
+ *		-ONLY WHEN MENTIONED &
+ *		-CREATES SPECIFIED NUMBER OF TIMES.
+ * */
+@Scope(value="prototype")
 @Component
 public class Car {
 	
@@ -20,7 +45,7 @@ public class Car {
 	}
 	public Car() {
 		super();
-		// TODO Auto-generated constructor stub
+		System.out.println("Object Created");
 	}
 	
 	public void setCid(int cid) {

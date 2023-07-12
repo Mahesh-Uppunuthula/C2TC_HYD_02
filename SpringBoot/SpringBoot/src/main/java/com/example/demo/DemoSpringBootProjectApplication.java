@@ -13,6 +13,8 @@ public class DemoSpringBootProjectApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(DemoSpringBootProjectApplication.class, args);
 
 		Car myCar = context.getBean(Car.class);
+		Car myCar1 = context.getBean(Car.class);
 		System.out.println(myCar.showProof());
+		System.out.println(myCar1.showProof());
 	}
 }
