@@ -1,9 +1,17 @@
 package com.example.demo.classes;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Car {
+	
+	/*
+	 * @Autowired is an annotation used for referring a dependency object
+	 * here 'Car' object is depending on 'Vehicle' object 
+	 * */
+	@Autowired
+	Vehicle v;
 	
 	private int cid;
 	private String name;
@@ -32,8 +40,8 @@ public class Car {
 		return "Car [cid=" + cid + ", name=" + name + "]";
 	}
 	
-	public String show() {
-		return "In show";
+	public String showProof() {
+		return "I'm a Car and\n[" + v.showVehicleDependency() + "] is my proof that I'm a Vehicle";
 	}
 
 }
